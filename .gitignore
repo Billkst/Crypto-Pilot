@@ -1,0 +1,30 @@
+# 运行时数据
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 虚拟环境
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# 模型权重 (由 HuggingFace 自动缓存至 ~/.cache/huggingface/)
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# OS
+.DS_Store
+Thumbs.db
