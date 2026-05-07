@@ -234,7 +234,7 @@ class Database:
 
         accuracy_pct is rounded to 1 decimal place, or None if sample_count == 0.
         """
-        date_filter = f"datetime('now', '-{days} days')"
+        modifier = f"-{days} days"
 
         if symbol is not None:
             sql = """
@@ -242,19 +242,19 @@ class Database:
                        COALESCE(SUM(direction_correct), 0) AS correct
                 FROM predictions
                 WHERE direction_correct IS NOT NULL
-                  AND predicted_at >= ?
+                  AND predicted_at >= datetime('now', ?)
                   AND symbol = ?
             """
-            params = (date_filter, symbol)
+            params = (modifier, symbol)
         else:
             sql = """
                 SELECT COUNT(*) AS total,
                        COALESCE(SUM(direction_correct), 0) AS correct
                 FROM predictions
                 WHERE direction_correct IS NOT NULL
-                  AND predicted_at >= ?
+                  AND predicted_at >= datetime('now', ?)
             """
-            params = (date_filter,)
+            params = (modifier,)
 
         with self._connect() as conn:
             row = conn.execute(sql, params).fetchone()
@@ -282,21 +282,21 @@ class Database:
         Only records with signal != 'Neutral' and actual_return IS NOT NULL
         are counted.
         """
-        date_filter = f"datetime('now', '-{days} days')"
+        modifier = f"-{days} days"
 
         base_where = """
             WHERE signal != 'Neutral'
               AND actual_return IS NOT NULL
-              AND predicted_at >= ?
+              AND predicted_at >= datetime('now', ?)
         """
 
         if symbol is not None:
             base_where += " AND symbol = ?"
-            params_total = (date_filter, symbol)
-            params_win = (date_filter, symbol)
+            params_total = (modifier, symbol)
+            params_win = (modifier, symbol)
         else:
-            params_total = (date_filter,)
-            params_win = (date_filter,)
+            params_total = (modifier,)
+            params_win = (modifier,)
 
         with self._connect() as conn:
             total_row = conn.execute(
@@ -332,7 +332,7 @@ class Database:
         cold_start_ms is the AVG of cold_start_ms WHERE cold_start_ms > 0
         (excludes cached/warm-start runs).
         """
-        date_filter = f"datetime('now', '-{days} days')"
+        modifier = f"-{days} days"
 
         with self._connect() as conn:
             row = conn.execute(
@@ -343,8 +343,8 @@ class Database:
                        AVG(inference_ms) AS inference_ms,
                        AVG(data_fetch_ms) AS data_fetch_ms
                    FROM predictions
-                   WHERE predicted_at >= ?""",
-                (date_filter,),
+                   WHERE predicted_at >= datetime('now', ?)""",
+                (modifier,),
             ).fetchone()
 
             return {
@@ -430,7 +430,8 @@ class Database:
                 rows = conn.execute(
                     """SELECT * FROM benchmarks
                        WHERE symbol = ?
-                       ORDER BY run_at DESC""",
+                       ORDER BY run_at DESC
+                       LIMIT 1""",
                     (symbol,),
                 ).fetchall()
             else:
@@ -477,7 +478,7 @@ class Database:
         """Return the most recent test run, or None if the table is empty."""
         with self._connect() as conn:
             row = conn.execute(
-                "SELECT * FROM test_runs ORDER BY id DESC LIMIT 1"
+                "SELECT * FROM test_runs ORDER BY run_at DESC LIMIT 1"
             ).fetchone()
 
             if row is None:
