@@ -72,7 +72,7 @@ def simulate_single_symbol(
 
         actual_idx = i + INPUT_WINDOW + OUTPUT_WINDOW - 1
         actual_row = raw_df.iloc[actual_idx]
-        actual_price = float(actual_row[4])
+        actual_price = float(actual_row["close"])
 
         x_ts = window_df["timestamp"]
         last_ts = x_ts.iloc[-1]
