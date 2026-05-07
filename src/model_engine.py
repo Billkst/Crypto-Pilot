@@ -26,13 +26,19 @@ from src.exceptions import ModelError
 class ModelEngine:
     """Kronos 模型推理引擎（全局单例，基于 st.cache_resource）。"""
 
+    _cold_start_ms: float | None = None
+
+    @classmethod
+    def get_last_cold_start_ms(cls) -> int:
+        """返回最近一次冷启动耗时 (ms)，若尚未加载则返回 0。"""
+        return int(cls._cold_start_ms) if cls._cold_start_ms is not None else 0
+
     @staticmethod
     @st.cache_resource
     def _load_model():
-        """
-        懒加载 Kronos 模型与 Tokenizer。
-        使用 st.cache_resource 确保跨 rerun 保持单例。
-        """
+        import time as _time
+
+        _t0 = _time.time()
         try:
             from model import Kronos, KronosPredictor, KronosTokenizer
 
@@ -44,6 +50,7 @@ class ModelEngine:
                 device="cpu",               # 强制 CPU (PRD §2.3.3)
                 max_context=MAX_CONTEXT,     # 512
             )
+            ModelEngine._cold_start_ms = (_time.time() - _t0) * 1000
             return predictor
         except Exception as e:
             raise ModelError(f"模型加载失败: {e}") from e
