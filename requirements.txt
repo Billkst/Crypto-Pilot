@@ -16,5 +16,8 @@ einops
 scipy
 huggingface_hub
 
+# ──────────────── CLI Tools ────────────────
+tqdm
+
 # ──────────────── Testing ────────────────
 pytest>=7.0.0
