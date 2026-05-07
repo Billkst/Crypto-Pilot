@@ -21,6 +21,13 @@ from tqdm import tqdm
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+# Mock streamlit 避免 @st.cache_resource 在非 Streamlit 环境报错
+from unittest.mock import MagicMock
+_mock_st = MagicMock()
+_mock_st.cache_resource = lambda func: func
+_mock_st.cache_data = lambda func: func
+sys.modules["streamlit"] = _mock_st
+
 from src.data_feed import DataFeed
 from src.model_engine import ModelEngine
 from src.database import Database
