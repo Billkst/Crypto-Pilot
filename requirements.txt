@@ -16,7 +16,10 @@ einops
 scipy
 huggingface_hub
 
-# ──────────────── CLI Tools ────────────────
+# ──────────────── Networking (Proxy) ────────────────
+# 如果使用 SOCKS 代理访问 HuggingFace，取消下一行的注释:
+# httpx[socks]
+
 tqdm
 
 # ──────────────── Testing ────────────────

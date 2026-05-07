@@ -92,7 +92,10 @@ def simulate_single_symbol(
         t0 = time.time()
         try:
             pred_df = model_engine.predict(x_data, x_ts, y_ts)
-        except Exception:
+        except Exception as e:
+            if i == 0:
+                print(f"\n  ⚠️ 预测失败 (仅显示首次): {e}")
+                print(f"    后续同类错误将静默跳过")
             continue
         inference_times.append((time.time() - t0) * 1000)
 
