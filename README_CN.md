@@ -83,6 +83,22 @@ streamlit run src/app.py
 
 ---
 
+## 📊 基准数据
+
+| 指标 | 数值 |
+|--------|-------|
+| 方向准确率 (30天回溯) | 详见 [BENCHMARK.md](docs/BENCHMARK.md) |
+| 平均推理耗时 (CPU, 热缓存) | ~25s |
+| 已测试币种 | BTC/USDT, ETH/USDT, SOL/USDT, DOGE/USDT |
+| 支持币种 | 所有 Binance 现货交易对 (动态) |
+| 单元测试 | 6/6 ✅ |
+| E2E 测试 | 7/7 ✅ |
+
+> 详细基准报告: [docs/BENCHMARK.md](docs/BENCHMARK.md).  
+> 运行 `python3 tools/backtest_simulate.py` 可重新生成。
+
+---
+
 ## 📺 效果演示
 
 | 步骤 | 截图 |

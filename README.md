@@ -84,6 +84,22 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ---
 
+## 📊 Benchmark
+
+| Metric | Value |
+|--------|-------|
+| Direction Accuracy (30d backtest) | See [BENCHMARK.md](docs/BENCHMARK.md) |
+| Avg Inference (CPU, warm cache) | ~25s |
+| Tested Pairs | BTC/USDT, ETH/USDT, SOL/USDT, DOGE/USDT |
+| All Binance Spot Pairs | Supported (dynamic) |
+| Unit Tests | 6/6 ✅ |
+| E2E Tests | 7/7 ✅ |
+
+> Detailed benchmark report: [docs/BENCHMARK.md](docs/BENCHMARK.md).  
+> Run `python3 tools/backtest_simulate.py` to regenerate.
+
+---
+
 ## 📺 Demo
 
 | Step | Screenshot |
