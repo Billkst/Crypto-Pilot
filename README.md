@@ -6,6 +6,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-v1.0.0_Beta-orange?style=for-the-badge)](https://github.com/Billkst/Crypto-Pilot/releases)
 [![CPU Only](https://img.shields.io/badge/CPU_Only-No_GPU_Needed-lightgrey?style=for-the-badge)](https://github.com/Billkst/Crypto-Pilot)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Streamlit_Cloud-ff4b4b?style=for-the-badge&logo=streamlit&logoColor=white)](https://crypto-pilot-billkst.streamlit.app/)
 
 📖 [English](README.md) | [中文](README_CN.md)
 
