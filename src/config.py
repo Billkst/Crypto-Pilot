@@ -29,9 +29,9 @@ TOP_P_MIN = 0.1
 TOP_P_MAX = 1.0
 
 # ──────────────── 数据源配置 ────────────────
-DEFAULT_SYMBOL = "BTC/USDT"
+DEFAULT_SYMBOL = "BTC/USD"
 TIMEFRAME = "1h"
-EXCHANGE_ID = "binance"
+EXCHANGE_ID = "kraken"
 FETCH_LIMIT = 500           # 每次拉取的 K 线条数上限
 
 # ──────────────── 网络与重试 ────────────────
