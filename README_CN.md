@@ -6,10 +6,13 @@
 [![License](https://img.shields.io/badge/许可证-MIT-green?style=for-the-badge)](LICENSE)
 [![Version](https://img.shields.io/badge/版本-v1.0.0_Beta-orange?style=for-the-badge)](https://github.com/Billkst/Crypto-Pilot/releases)
 [![CPU Only](https://img.shields.io/badge/纯CPU-无需GPU-lightgrey?style=for-the-badge)](https://github.com/Billkst/Crypto-Pilot)
+[![Live Demo](https://img.shields.io/badge/在线体验-Streamlit_Cloud-ff4b4b?style=for-the-badge&logo=streamlit&logoColor=white)](https://crypto-pilot-billkst.streamlit.app/)
 
 📖 [English](README.md) | [中文](README_CN.md)
 
 > **Crypto-Pilot** 是一个基于 [NeoQuasar/Kronos-base](https://huggingface.co/NeoQuasar/Kronos-base) 时序基础模型的本地加密货币量化预测终端。它通过 **ccxt** 实时获取 Binance 市场数据，在你本地 CPU 上完成推理，并生成未来 24 小时价格预测与动态交易信号。**无需 GPU，无需 API Key，完全本地运行。**
+
+🌍 **在线体验链接**: [https://crypto-pilot-billkst.streamlit.app/](https://crypto-pilot-billkst.streamlit.app/)
 
 ---
 

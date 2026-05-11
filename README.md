@@ -12,6 +12,8 @@
 
 > **Crypto-Pilot** is a local cryptocurrency quantitative prediction terminal powered by the [NeoQuasar/Kronos-base](https://huggingface.co/NeoQuasar/Kronos-base) time-series foundation model. It pulls real-time market data from Binance via **ccxt**, runs inference on your local CPU, and generates 24-hour price forecasts with dynamic trading signals. **No GPU. No API key. Fully local.**
 
+🌍 **Live Demo:** [https://crypto-pilot-billkst.streamlit.app/](https://crypto-pilot-billkst.streamlit.app/)
+
 ---
 
 <details>
